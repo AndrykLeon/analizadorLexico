@@ -72,6 +72,7 @@ namespace WindowsFormsApp1
                 preUltimoEdo = ultimoEdo;
                 ultimoEdo = edo;
             }
+            ImprimirFilaFinal(edo, palabra, cadena);
         }
 
         private int SacarCar(char caracter)
@@ -137,6 +138,36 @@ namespace WindowsFormsApp1
         private void ImprimirFila (int edo, string palabra, char[] cadena)
         {
             if ((edo == 0) && cadenaAMostrar.Count > 0)
+            {
+                string tipo = "";
+                palabra = "";
+
+                foreach (var letra in cadenaAMostrar)
+                {
+                    palabra = palabra + letra;
+                }
+
+                if (cont > 0)
+                {
+                    if (dos.Contains(cadena[cont - 1]))
+                    {
+                        palabra = palabra.Remove(palabra.Length - 1);
+                        tipo = SacarTipo(preUltimoEdo);
+                    }
+                    else
+                        tipo = SacarTipo(ultimoEdo);
+                }
+                else
+                    tipo = SacarTipo(ultimoEdo);
+
+                dataGridView1.Rows.Add(contadorCadenas, contadorLineas, palabra, tipo);
+                contadorCadenas++;
+                cadenaAMostrar.Clear();
+            }
+        }
+        private void ImprimirFilaFinal(int edo, string palabra, char[] cadena)
+        {
+            if (cadenaAMostrar.Count > 0)
             {
                 string tipo = "";
                 palabra = "";
