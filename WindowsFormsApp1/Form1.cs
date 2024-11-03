@@ -146,6 +146,10 @@ namespace WindowsFormsApp1
                     palabra = palabra + letra;
                 }
 
+
+
+
+
                 if (cont > 0)
                 {
                     if (dos.Contains(cadena[cont - 1]))
